@@ -91,6 +91,7 @@ This allows real-time detection and response to brute-force attacks.
 - Monitors failed login attempts (Event ID 4625)
 - Flags accounts with multiple failures
 - Helps identify brute-force attacks
+- Can be extended to detect password spray attacks by analyzing multiple accounts from a single source IP
 
 ---
 
@@ -107,7 +108,7 @@ This allows real-time detection and response to brute-force attacks.
 - Add dashboard visualization
 - Integrate with SOAR tools
 
- ## Why This Project Matters
+## Why This Project Matters
 Brute-force attacks are one of the most common techniques used by attackers to gain unauthorized access to systems.
 
 This project demonstrates how a SOC analyst can detect such attacks early using log analysis and SIEM tools like Splunk, helping prevent potential security breaches.
