@@ -5,6 +5,11 @@ This project demonstrates detection of brute-force login attempts in an Active D
 
 The lab simulates real-world SOC monitoring by collecting Windows Security logs and identifying suspicious authentication activity.
 
+## Attack Scenario
+An attacker attempts multiple login attempts using invalid credentials on a domain user account.
+
+The system logs these attempts as Event ID 4625 in Windows Security logs. These logs are forwarded to Splunk, where repeated failures are analyzed to detect brute-force behavior.
+
 ---
 
 ## Technologies Used
@@ -71,10 +76,14 @@ Enabled:
 ### Detection Query
 ![Detection](images/7-attack-detection.png)
 index=* EventCode=4625
-| stats count by Account_Name
+| stats count by Account_Name, src_ip
 | where count > 5
 | sort -count
 
+## Alerting
+A Splunk alert can be configured to trigger when failed login attempts exceed a defined threshold (e.g., more than 5 attempts).
+
+This allows real-time detection and response to brute-force attacks.
 
 ---
 
@@ -97,4 +106,9 @@ index=* EventCode=4625
 - Create real-time alerts in Splunk
 - Add dashboard visualization
 - Integrate with SOAR tools
+
+ ## Why This Project Matters
+Brute-force attacks are one of the most common techniques used by attackers to gain unauthorized access to systems.
+
+This project demonstrates how a SOC analyst can detect such attacks early using log analysis and SIEM tools like Splunk, helping prevent potential security breaches.
 
