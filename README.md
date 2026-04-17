@@ -69,7 +69,7 @@ Enabled:
 ---
 
 ### Detection Query
-![Detection](images/7-detection.png)
+![Detection](images/7-attack-detection.png)
 index=* EventCode=4625
 | stats count by Account_Name
 | where count > 5
